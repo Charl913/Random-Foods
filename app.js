@@ -1,5 +1,4 @@
 var foods = [
-    // Main dishes
     "Pizza",
     "Sushi",
     "Tacos",
@@ -25,8 +24,6 @@ var foods = [
     "Tamales",
     "Shepherd’s Pie",
     "Moussaka",
-
-    // Fruits
     "Apple",
     "Banana",
     "Strawberry",
@@ -43,8 +40,6 @@ var foods = [
     "Coconut",
     "Pomegranate",
     "Guava",
-
-    // Vegetables
     "Carrot",
     "Broccoli",
     "Spinach",
@@ -61,8 +56,6 @@ var foods = [
     "Corn",
     "Asparagus",
     "Beetroot",
-
-    // Snacks & sides
     "Nachos",
     "French Fries",
     "Mozzarella Sticks",
@@ -75,8 +68,6 @@ var foods = [
     "Bruschetta",
     "Empanadas",
     "Samosa",
-
-    // Desserts
     "Ice Cream",
     "Cupcakes",
     "Brownies",
@@ -93,8 +84,6 @@ var foods = [
     "Pie",
     "Mochi",
     "Eclair",
-
-    // Drinks
     "Water",
     "Coffee",
     "Tea",
@@ -111,3 +100,27 @@ var foods = [
     "Espresso",
     "Bubble Tea"
 ];
+
+function hello(name) {
+    if (name == null || name == '') {
+        console.log("You didn't give me your name");
+    }
+    else {
+        console.log(`Hello, and Welcome ${name}!`);
+    }
+    return name;
+}
+function randomInt(min, max) {
+    return (Math.floor((max - min + 1) * Math.random())) + min;
+}
+
+function hospitality(name, gifts) {
+    if (name == null || name == '') {
+        console.log('No gifts.');
+    }
+    else {
+        console.log(`${name}, would you like some ${gifts[randomInt(0, gifts.length - 1)]}?`)
+    }
+}
+
+hospitality(hello(prompt('What is your name?', '')), foods);
