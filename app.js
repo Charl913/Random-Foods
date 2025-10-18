@@ -114,17 +114,17 @@ function randomInt(min, max) {
     return (Math.floor((max - min + 1) * Math.random())) + min;
 }
 function toTitleCase(str) {
-  if (!str) {
-    return ""; // Handle empty or null strings
-  }
-  return str
-    .toLowerCase() // Convert the entire string to lowercase first
-    .split(" ") // Split the string into an array of words
-    .map(function (word) {
-      // For each word, capitalize the first letter and keep the rest lowercase
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(" "); // Join the words back into a single string with spaces
+    if (!str) {
+        return ""; // Handle empty or null strings
+    }
+    return str
+        .toLowerCase() // Convert the entire string to lowercase first
+        .split(" ") // Split the string into an array of words
+        .map(function (word) {
+            // For each word, capitalize the first letter and keep the rest lowercase
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        .join(" "); // Join the words back into a single string with spaces
 }
 
 function hospitality(name, gifts) {
