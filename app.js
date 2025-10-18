@@ -101,17 +101,30 @@ var foods = [
     "Bubble Tea"
 ];
 
-function hello(name) {
+function greeting(name) {
     if (name == null || name == '') {
         console.log("You didn't give me your name");
     }
     else {
-        console.log(`Hello, and Welcome ${name}!`);
+        console.log(`Hello, and Welcome ${toTitleCase(name)}!`);
     }
     return name;
 }
 function randomInt(min, max) {
     return (Math.floor((max - min + 1) * Math.random())) + min;
+}
+function toTitleCase(str) {
+  if (!str) {
+    return ""; // Handle empty or null strings
+  }
+  return str
+    .toLowerCase() // Convert the entire string to lowercase first
+    .split(" ") // Split the string into an array of words
+    .map(function (word) {
+      // For each word, capitalize the first letter and keep the rest lowercase
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" "); // Join the words back into a single string with spaces
 }
 
 function hospitality(name, gifts) {
@@ -119,8 +132,8 @@ function hospitality(name, gifts) {
         console.log('No gifts.');
     }
     else {
-        console.log(`${name}, would you like some ${gifts[randomInt(0, gifts.length - 1)]}?`)
+        console.log(`${toTitleCase(name)}, would you like some ${gifts[randomInt(0, gifts.length - 1)].toLowerCase()}?`)
     }
 }
 
-hospitality(hello(prompt('What is your name?', '')), foods);
+hospitality(greeting(prompt('What is your name?', '')), foods);
