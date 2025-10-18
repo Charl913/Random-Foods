@@ -137,3 +137,39 @@ function hospitality(name, gifts) {
 }
 
 hospitality(greeting(prompt('What is your name?', '')), foods);
+
+function removeFood(item) {
+    console.log('\n');
+    if (item == null || item == '') {
+        console.log("You didn't give me something to remove");
+    }
+    else {
+        for (var i = 0; i < foods.length; i++) {
+            if(foods[i] === toTitleCase(item)){
+                foods.splice(foods[i],1);
+                console.log(`<<Item remove here>>`);
+            }
+            console.log(foods[i]);
+        }
+    }
+}
+
+function addFood(item) {
+    if (item == null || item == '') {
+        console.log("You didn't give me something to add");
+    }
+    else {
+        foods.push(item);
+        for (var i = 0; i < foods.length; i++) {
+            if (foods[i] === item) {
+                console.log(`${foods[i]} <-- here is your item`);
+            }
+            else {
+                console.log(foods[i]);
+            }
+        }
+        removeFood(prompt('would you like to remove something?', ''));
+    }
+}
+
+addFood(prompt('would you like to add something?', ''));
