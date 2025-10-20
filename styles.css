@@ -2,9 +2,12 @@
     color: white;
     background-color: black;
     text-align: center;
+    border-radius: 0% 5%;
 }
 
 .remove {
     color: black;
     text-align: center;
+    background-color: bisque;
+    border-radius: 0% 5%;
 }
