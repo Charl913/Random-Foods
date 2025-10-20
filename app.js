@@ -100,6 +100,21 @@ var foods = [
     "Espresso",
     "Bubble Tea"
 ];
+var myTag;
+var mySentence;
+var added = false;
+
+function createNewFoodElement(sentence) {
+    myTag = document.createElement('p');
+    mySentence = sentence;
+    myTag.appendChild(mySentence);
+    if (added === false) {
+        document.querySelector('.add').appendChild(myTag);
+    }
+    else {
+        document.querySelector('.remove').appendChild(myTag);
+    }
+}
 
 function greeting(name) {
     if (name == null || name == '') {
@@ -139,7 +154,6 @@ function hospitality(name, gifts) {
 hospitality(greeting(prompt('What is your name?', '')), foods);
 
 function removeFood(item) {
-    console.log('\n');
     if (item == null || item == '') {
         console.log("You didn't give me something to remove");
     }
@@ -147,36 +161,24 @@ function removeFood(item) {
         for (var i = 0; i < foods.length; i++) {
             if (foods[i] === toTitleCase(item)) {
                 foods.splice(foods[i], 1);
-                console.log(`<<Item remove here>>`);
             }
-            console.log(foods[i]);
+            createNewFoodElement(document.createTextNode(`${foods[i]}`));
         }
     }
 }
 
 function addFood(item) {
-    var myTag = document.createElement('p');
-    var mySentence;
     if (item == null || item == '') {
         console.log("You didn't give me something to add");
     }
     else {
         foods.push(toTitleCase(item));
         for (var i = 0; i < foods.length; i++) {
-            myTag = document.createElement('p');
-            if (foods[i] == toTitleCase(item)) {
-                //console.log(`<p>${foods[i]} <-- here is your item<p>`);
-                mySentence = document.createTextNode(`${foods[i]} <-- here is your item`);
-                myTag.appendChild(mySentence);
-                document.querySelector('div').appendChild(myTag);
-            }
-            else {
-                mySentence = document.createTextNode(`${foods[i]}`);
-                myTag.appendChild(mySentence);
-                document.querySelector('div').appendChild(myTag);
-            }
+            createNewFoodElement(document.createTextNode(`${foods[i]}`));
         }
+        added = true;
     }
+
 }
 
 addFood(prompt('would you like to add something?', ''));
