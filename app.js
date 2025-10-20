@@ -145,8 +145,8 @@ function removeFood(item) {
     }
     else {
         for (var i = 0; i < foods.length; i++) {
-            if(foods[i] === toTitleCase(item)){
-                foods.splice(foods[i],1);
+            if (foods[i] === toTitleCase(item)) {
+                foods.splice(foods[i], 1);
                 console.log(`<<Item remove here>>`);
             }
             console.log(foods[i]);
@@ -155,21 +155,29 @@ function removeFood(item) {
 }
 
 function addFood(item) {
+    var myTag = document.createElement('p');
+    var mySentence;
     if (item == null || item == '') {
         console.log("You didn't give me something to add");
     }
     else {
-        foods.push(item);
+        foods.push(toTitleCase(item));
         for (var i = 0; i < foods.length; i++) {
-            if (foods[i] === item) {
-                console.log(`${foods[i]} <-- here is your item`);
+            myTag = document.createElement('p');
+            if (foods[i] == toTitleCase(item)) {
+                //console.log(`<p>${foods[i]} <-- here is your item<p>`);
+                mySentence = document.createTextNode(`${foods[i]} <-- here is your item`);
+                myTag.appendChild(mySentence);
+                document.querySelector('div').appendChild(myTag);
             }
             else {
-                console.log(foods[i]);
+                mySentence = document.createTextNode(`${foods[i]}`);
+                myTag.appendChild(mySentence);
+                document.querySelector('div').appendChild(myTag);
             }
         }
-        removeFood(prompt('would you like to remove something?', ''));
     }
 }
 
 addFood(prompt('would you like to add something?', ''));
+removeFood(prompt('would you like to remove something?', ''));
